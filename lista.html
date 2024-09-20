@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Julius+Sans+One&family=Love+Ya+Like+A+Sister&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app" class="container">
+        <h1>REGISTRO DE ESTUDIANTES</h1>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" v-model="estudiante.nombre" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <label class="form-label">Apellido</label>
+                <input type="text" v-model="estudiante.apellido" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <label class="form-label">Asistencia</label>
+                <select v-model="estudiante.estado" class="form-control">
+                    <option value="Presente">Presente</option>
+                    <option value="Ausente">Ausente</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-outline-primary" @click="guardar">GUARDAR</button>
+        
+        <h2>LLAMADO A ASISTENCIA</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>ASISTENCIA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(est, index) in estudiantes" :key="index" :class="{'fondo1': est.estado === 'Presente', 'fondo2': est.estado === 'Ausente'}">
+                    <td>{{ est.nombre }}</td>
+                    <td>{{ est.apellido }}</td>
+                    <td>{{ est.estado }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const { createApp } = Vue;
+  
+        createApp({
+            data() {
+                return {
+                    estudiantes: [],
+                    estudiante: {
+                        nombre: '',
+                        apellido: '',
+                        estado: ''
+                    }
+                }
+            },
+            methods: {
+                guardar() {
+                    const copia = { ...this.estudiante };
+                    this.estudiantes.push(copia);
+                    // Limpiar el formulario
+                    this.estudiante = { nombre: '', apellido: '', estado: '' };
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
