@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+    
+}
+body {
+    background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%, transparent 100%), url(/CSS/manzana.png.jpg);
+    font-family: 'MuseoModerno';
+}
+h1 {
+    font-family: 'titan one';
+    color:#00FF00;
+    text-shadow: 0px 0px 10px #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 3.5rem;
+}
+h3 {
+    color: #fff;
+    font-size: 30px;
+}
+span {
+    color: #f50b0b;
+    text-shadow: 0px 0px 8px #000;
+}
+.numero {
+    color: #fff;
+    font-size: 30px;
+    text-shadow: 0px 0px 8px #000;
+}
+.numero-2 {
+    margin-left: 20px;
+}
+.numero-3 {
+    color: #fff;
+    font-size: 30px;
+}
+.button-1 {
+    margin-left: 30px;
+    border: none;
+    border-radius: 16px;
+    height: 45px;
+}
+.button-1:hover {
+    background-color: #48e;
+    color: #fff;
+    box-shadow: 0px 0px 10px #48e;
+}
+.input-2 {
+    height: 30px;
+}
+.button-2 {
+    margin-left: 30px;
+    border: none;
+    border-radius: 20px;
+    height: 45px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'MuseoModerno';
+}
+.button-2:hover {
+    background-color: #00FF00;
+    color: #fff;
+    box-shadow: 0px 0px 14px #00FF00;
+    filter: drop-shadow(0px 0px  7px #00ff00);
+}
+.button-3 {
+    border-radius: 20px;
+    margin-left: 30px;
+    border: none;
+    height: 55px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'MuseoModerno';
+}
+.button-3:hover {
+    background-color: #f50b0b;
+    color: #fff;
+    box-shadow: 0px 0px 14px #f50b0b;
+    filter: drop-shadow(0px 0px  7px #f50b0b);
+}
+.input-1 {
+    height: 30px;
+    margin-bottom: 20px;
+}
+.input-1, .input-2 {
+    border-radius: 16px;
+    height: 45px;
+    border: 2px solid #fff;
+    background-color: #FFFF99;
+    font-size: 25px;
+    max-width: 200px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container-2 {
+    display: flex;
+    gap: 10px;
+}
+
+.box {
+    flex: 1;
+    border: none;
+    width: 300px;
+    min-height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color:rgba(255, 255, 255, 0.418);
+    border-radius: 25px;
+}
+
+.apple {
+    width: 50px;
+    height: 50px;
+    opacity: none;
+}
+.controls {
+    margin-top: 20px;
+}
+.texto {
+    color: #fff;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.modal-content button {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border:2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+    color: #fff;
+    border: none;
+}

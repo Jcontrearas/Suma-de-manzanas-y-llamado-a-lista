@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende a Sumar con Manzanas</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rowdies:wght@300;400;700&family=Titan+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio src="/CSS/whistle-joyride-193123.mp3" autoplay loop>         
+    </audio>
+    <div id="app" class="container">
+        <h1>Aprende a Sumar con Manzanas</h1>
+        <div class="controls">
+            <label class="numero">Número A: <input class="input-1" type="number" v-model="numeroA" min="0"></label>
+            <label class="numero numero-2">Número B: <input class="input-1" type="number" v-model="numeroB" min="0"></label>
+        </div>
+
+        <div class="container-2">
+            <h3><span>Manzanas</span>  A:</h3>
+            <div class="box">
+                <img v-for="n in numeroA" :key="'a' + n" src="https://img.icons8.com/color/48/apple.png" class="apple">
+            </div>
+            
+            <h3><span>Manzanas </span> B:</h3> 
+            <div class="box">
+                <img v-for="n in numeroB" :key="'b' + n" src="https://img.icons8.com/color/48/apple.png" class="apple">
+            </div>
+        </div>
+
+        <div class="controls">
+            <label class="numero-3">Tu Respuesta: <input class="input-2" type="number" v-model="respuestaUsuario"></label>
+            <button class="button-2" @click="verificarRespuesta">Verificar Respuesta</button>
+        </div>
+
+        <p class="texto">Aciertos: {{ aciertos }} | Fallos: {{ fallos }}</p>
+        <button class="button-3" @click="reiniciarJuego">Reiniciar Juego</button>
+
+        <!-- Modal personalizado -->
+        <div v-if="mostrarAlerta" class="modal">
+            <div class="modal-content">
+                <p>{{ mensajeAlerta }}</p>
+                <button @click="cerrarAlerta">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    numeroA: 0,
+                    numeroB: 0,
+                    respuestaUsuario: '',
+                    aciertos: 0,
+                    fallos: 0,
+                    mostrarAlerta: false,
+                    mensajeAlerta: ''
+                };
+            },
+            methods: {
+                generarSuma() {
+                    this.respuestaUsuario = '';
+                },
+                verificarRespuesta() {
+                    const sumaCorrecta = this.numeroA + this.numeroB;
+                    if (parseInt(this.respuestaUsuario) === sumaCorrecta) {
+                        this.mostrarAlerta = true;
+                        this.mensajeAlerta = "¡Correcto!";
+                        this.aciertos++;
+                    } else {
+                        this.mostrarAlerta = true;
+                        this.mensajeAlerta = "Incorrecto. La respuesta correcta es " + sumaCorrecta;
+                        this.fallos++;
+                    }
+                    this.respuestaUsuario = ''; 
+                },
+                cerrarAlerta() {
+                    this.mostrarAlerta = false;
+                },
+                reiniciarJuego() {
+                    this.numeroA = 0;
+                    this.numeroB = 0;
+                    this.respuestaUsuario = '';
+                    this.aciertos = 0; 
+                    this.fallos = 0;
+                    this.mostrarAlerta = false;
+                    this.mensajeAlerta = '';
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
